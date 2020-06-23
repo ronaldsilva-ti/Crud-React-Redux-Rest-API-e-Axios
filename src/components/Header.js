@@ -1,16 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-
-
-
 export default function Header(){
     return(
         <nav className="navbar navbar-expand-lg navbar-dark bg-primary justify-content-between">
             <div className="container">
                 <h1>
                     <Link to={'/'} className="text-light">
-                        Crud - React, Redux
+                        CRUD - React, Redux, Rest API e Axios
                     </Link>   
                 </h1>
             </div>
@@ -20,7 +17,6 @@ export default function Header(){
                 to={'/produtos/novo'}>
                 Agregar Produto &#43;
             </Link>
-
         </nav>
     )
 }
