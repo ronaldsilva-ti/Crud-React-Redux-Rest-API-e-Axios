@@ -4,7 +4,7 @@
 
 1.Install Node.js
 
-2.```git clone https://github.com/ronaldsilva-ti/Crud-React-Redux-Rest-API-e-Axios```
+2.```git clone https://github.com/ronaldsilva-ti/Crud-React-Redux-Rest-API-e-Axios.git```
 
 3.```cd Crud-React-Redux-Rest-API-e-Axios```
 
