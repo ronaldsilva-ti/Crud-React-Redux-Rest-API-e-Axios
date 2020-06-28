@@ -6,7 +6,7 @@
 
 2.```git clone https://github.com/ronaldsilva-ti/Crud-React-Redux-Rest-API-e-Axios```
 
-3.```cd frontend```
+3.```cd Crud-React-Redux-Rest-API-e-Axios```
 
 4.```npm install```
 
