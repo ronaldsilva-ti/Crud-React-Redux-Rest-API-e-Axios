@@ -34,7 +34,6 @@ export default function NovosProdutos({ history }) {
             return;
         }
 
-
         //se não há erros
 
 
@@ -44,7 +43,7 @@ export default function NovosProdutos({ history }) {
             preco
         });
 
-        history.push('/')
+        history.push('/');
     }
 
     return(
