@@ -1,15 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import  Swal from 'sweetalert2'
+import { useHistory } from 'react-router-dom';
+import  Swal from 'sweetalert2';
 
 //Redux
 import { useDispatch } from 'react-redux';
-import { eliminarProdutoAction } from '../actions/produtosActions';
+import { eliminarProdutoAction, obterProdutoEditar } from '../actions/produtosActions';
 
 const Produto = ( {produto} ) => {
     const { nome,preco, id  } = produto;
     
     const dispatch = useDispatch();
+    const history = useHistory();
 
     function confirmaEmilinarProduto( id ){
 
@@ -28,7 +29,6 @@ const Produto = ( {produto} ) => {
             //passar para actions
             dispatch( eliminarProdutoAction(id) );
 
-
             Swal.fire(
                 'Excluido!',
                 'Seu arquivo foi deletado.',
@@ -38,21 +38,20 @@ const Produto = ( {produto} ) => {
           })
         }
 
+        const redirecionarEdicao = produto => {
+            dispatch( obterProdutoEditar(produto) )
+            history.push(`/produtos/editar/${produto.id}`)
+        }
 
 
-
-
-
-
-    
     return ( 
         <tr>
             <td>{nome}</td>
             <td><span className="font-weight-bold">$</span>{preco}</td>
             <td className="acoes">
-                <Link to={`/produtos/editar/${id}`} className="btn btn-primary mr-2">
+                <button onClick={() => redirecionarEdicao(produto)} className="btn btn-primary mr-2">
                     Editar
-                </Link>
+                </button>
 
                 <button
                     type="button"

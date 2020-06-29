@@ -1,9 +1,19 @@
 {
   "produtos": [
     {
+      "nome": "GTA 5 ",
+      "preco": 12,
+      "id": 1
+    },
+    {
       "nome": "GTA San Andreas",
-      "preco": 777,
+      "preco": 12,
       "id": 2
+    },
+    {
+      "nome": "Minecraft",
+      "preco": 88,
+      "id": 3
     }
   ]
 }
