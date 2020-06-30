@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { editarProdutoAction } from '../actions/produtosActions'
 
 //Redux
@@ -7,17 +7,35 @@ import { useDispatch,useSelector } from 'react-redux';
 
 export default function EditarProdutos(){
 
-    const produtos = useSelector(state => state.produtos.produtosEditar) ;
-    //caso não exista produtos
-    if(!produtos) return null;
+    const [ produto,guardarProduto ] = useState({
+        nome:'',
+        preco: ''
+    })
+    
+    const produtosEditar = useSelector(state => state.produtos.produtosEditar);   
 
-    const { nome, preco, id } = produtos;
+    useEffect( () => {
+
+        guardarProduto(produtosEditar)
+
+    },[produtosEditar])
+   
+    //Ler os dados do Formulario
+    const OnchangeFormulario = e => {
+        guardarProduto({
+            ...produto,
+            [e.target.name] : e.target.value
+        })
+    }
+    const { nome, preco, id } = produto;
+
+
 
     function editarProduto(e){   
 
         e.preventDefault();
 
-        // editarProdutoAction()
+         editarProdutoAction()
     }
 
     return(
@@ -38,8 +56,9 @@ export default function EditarProdutos(){
                                 type="text"
                                 className="form-control"
                                 placeholder="Nome Produto"
-                                name="produto"
+                                name="nome"
                                 value={ nome }
+                                onChange={OnchangeFormulario}
                             />
                         </div>
 
@@ -52,6 +71,7 @@ export default function EditarProdutos(){
                                 placeholder="Preço Produto"
                                 name="preco"
                                 value={ preco }
+                                onChange={OnchangeFormulario}
                             />
                         </div>
 
