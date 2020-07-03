@@ -158,21 +158,32 @@ const obterProdutosEdicaoAction = (produtos) => ({
 
 export function editarProdutoAction(produtos){
     return async( dispatch ) => {
-        dispatch( editarProduto(produtos) )
+        dispatch( editarProduto() )
 
         try {
-           const resultado = clienteAxios.put(`/produtos/${produtos.id}`, produtos);
-           console.log(resultado)
+            
+          await clienteAxios.put(`/produtos/${produtos.id}`, produtos);
+           dispatch( editarProdutoExito(produtos) )
             
         } catch (error) {
-            console.log(error);
-            
+            console.log(error);           
+            dispatch( editarProdutoError() ) 
         }
     }
 }
 
 
-const editarProduto = produtos => ({
-    type:COMECAR_EDICAO_PRODUTOS,
+const editarProduto = () => ({
+    type:COMECAR_EDICAO_PRODUTOS   
+})
+
+const editarProdutoExito = produtos => ({
+    type: PRODUTO_EDITADO_EXITO,
     payload:produtos
 })
+
+const editarProdutoError = () => ({
+    type:PRODUTO_EDITADO_ERROR,
+    payload:true
+
+});

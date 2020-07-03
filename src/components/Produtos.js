@@ -17,7 +17,7 @@ export default function Produtos(){
         //Consultar a API
         const carregarProdutos = () => dispatch( obterProdutosAction() )
         carregarProdutos()
-
+        //eslint-disable-next-line
     }, []);
 
     //obter o state

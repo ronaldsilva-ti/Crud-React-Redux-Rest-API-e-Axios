@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { editarProdutoAction } from '../actions/produtosActions'
+import { editarProdutoAction } from '../actions/produtosActions';
+import { useHistory } from 'react-router-dom'
 
 //Redux
 import { useDispatch,useSelector } from 'react-redux';
@@ -7,12 +8,15 @@ import { useDispatch,useSelector } from 'react-redux';
 
 export default function EditarProdutos(){
 
+
     const [ produto,guardarProduto ] = useState({
         nome:'',
         preco: ''
     })
     
-    const produtosEditar = useSelector(state => state.produtos.produtosEditar);   
+    const produtosEditar = useSelector(state => state.produtos.produtosEditar); 
+    const dispactch = useDispatch();
+    const history = useHistory();
 
     useEffect( () => {
 
@@ -27,15 +31,14 @@ export default function EditarProdutos(){
             [e.target.name] : e.target.value
         })
     }
-    const { nome, preco, id } = produto;
-
-
+    const { nome, preco } = produto;
 
     function editarProduto(e){   
-
         e.preventDefault();
 
-         editarProdutoAction()
+        dispactch( editarProdutoAction(produto) ); 
+        
+        history.push("/")
     }
 
     return(

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 //Actions de Redux
 import { criarNovoProdutoAction } from '../actions/produtosActions';
+import { mostrarAlertaAction } from '../actions/alertaActions'
 
 export default function NovosProdutos({ history }) {
 
@@ -18,6 +19,7 @@ export default function NovosProdutos({ history }) {
     //Acessar o state do store
     const carregando = useSelector(state => state.produtos.loading);
     const erro = useSelector(state => state.produtos.error);
+    const alertaError = useSelector(state => state.alerta.alerta);
     console.log(erro)
 
 
@@ -31,6 +33,14 @@ export default function NovosProdutos({ history }) {
 
         //validar formulario
         if(nome.trim() === '' || preco <= 0 ){
+
+            const alerta = {
+                msg: 'Os campos são obrigatorios',
+                classes: 'alert alert-danger text-center text-uppercase p3 mt-2'
+            }
+
+            dispatch( mostrarAlertaAction( alerta ) )         
+
             return;
         }
 
@@ -95,7 +105,7 @@ export default function NovosProdutos({ history }) {
 
                         { carregando ? <p>Carregando..</p> : null }
                         { erro ? <p className="alert alert-danger text-center mt-2">Há um erro</p> : null }
-
+                        {alertaError ? <p className={alertaError.classes}>{alertaError.msg}</p> : null }
                     </div>
 
                 </div>
