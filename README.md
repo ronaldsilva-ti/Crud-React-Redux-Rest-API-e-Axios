@@ -12,7 +12,7 @@
 
 5.```json-server --watch db.json --port 3004 ```
 
-6. ```cd .. && cd ..```
+6.```cd .. && cd ..```
 
 4.```npm install```
 
