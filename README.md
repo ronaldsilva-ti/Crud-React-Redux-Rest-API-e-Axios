@@ -1,4 +1,4 @@
-# CRUD - React, Redux, Rest API e Axios
+# CRUD - React, Redux, Rest API e Axios - FAKE API
 
 #Local Instalação
 
