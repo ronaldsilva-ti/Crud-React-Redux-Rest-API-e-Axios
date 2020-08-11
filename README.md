@@ -1,6 +1,5 @@
 # CRUD - React, Redux, Rest API e Axios - FAKE API
 
-#Local Instalação
 
 1.Install Node.js
 
